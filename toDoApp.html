@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>To-Do App</title>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="toDoApp.css">
+        <link rel="icon" type="image/png" href="favicon.png"/>
+        <script src="ToDoApp.js"></script>
+    </head>
+    <body>
+        <h1>To-Do App</h1>
+        <p>Add tasks to track using the form below.</p>
+        <div id="enterItem">
+            <h2><img id="newIcon" src="now_code_this_icon.png">Add an Item<img id="newIcon" src="now_code_this_icon.png"></h2>
+        <div id="topTaskTableContainer">
+            <div class="tableRow">
+                <div class="formElement"><label for="task">Task: </label><input id="taskField" type="text"></div>
+            </div>
+        </div>
+        <div id="bottomTaskTableContainer">
+            <div class="tableRow">
+                <div class="formElement"><label for="date">Date: </label><input id="dateField" type="date"></div>
+                <div class="formElement"><label for="priority">Priority:</label>
+                    <select class="dropdown">
+                        <option value="" disabled selected>Level</option>
+                        <option value="High">High</option>
+                        <option value="Med">Med</option>
+                        <option value="Low">Low</option>
+                    </select></div>
+                    <div class="formElement"><button id="addButton">Add to List</button></div>
+                </div>
+                </div>
+                <div id="error">
+                    <p id="errorMessage">Please enter all fields.</p>
+                </div>
+            </div>
+        </div>
+        <div id="taskSection">
+        <div id="sortDeleteTable">
+            <div class="tableRow">
+                <div class="sortDeleteElement">
+                    <label for="priority">Sort by:</label>
+                    <select class="dropdown">
+                        <option value="" disabled selected>Order</option>
+                        <option value="Task">Task</option>
+                        <option value="Date">Date</option>
+                        <option value="Priority">Priority</option>
+                        <option value="Priority">None</option>
+                </select>
+            </div>
+        </div>
+        </div>
+        <table id="taskTable">
+            <tr>
+                <th id="taskHeader">Task</th>
+                <th id="dateHeader">Due Date</th>
+                <th id="priorityHeader">Priority</th>
+                <th id="editHeader">Edit</th>
+                <th id="deleteHeader">Delete</th>
+            </tr>
+            <tr>
+                <td class="taskItem">Test Task</td>
+                <td>Test Date</td>
+                <td>Test Priority</td>
+                <td><img src="editIcon.png"></td>
+                <td><img src="deleteIcon.png"></td>
+            </tr>
+        </table>
+    </div>
+        <div id="deleteWarning" class="modal">
+            <div class="modal-content">
+                <h2>Are you sure?</h2>
+                <p>Do you want to delete all items from the list?</p>
+                <p>This cannot be undone.</p>
+                <div id="modalTableContainer">
+                    <div class="TableRow">
+                    <div class="sortDeleteElement"><button id="goBackButton">Go Back</button></div>
+                    <div class="sortDeleteElement"><button id="deleteAllModalButton">Delete All</button></div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <button id="deleteAllMainButton" type="button">Delete All</button>
+            <a href="https://nowcodethis.com/projects/"><button type="button" class="link" id="backToProjects">Back to Projects</button></a>
+        </div>
+        </body>
+</html>
