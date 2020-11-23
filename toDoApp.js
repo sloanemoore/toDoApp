@@ -71,9 +71,15 @@ let view = {
         let tableCell4 = tableRow.insertCell(4);
         tableCell0.innerHTML = task.taskName;
         tableCell0.setAttribute("class", "taskItem");
+        let taskNameId = "taskNameId" + String(task.taskNumber);
+        tableCell0.setAttribute("id", taskNameId);
         tableCell1.innerHTML = task.taskDate;
+        let taskDateId = "taskDateId" + String(task.taskNumber);
+        tableCell1.setAttribute("id", taskDateId);
         tableCell2.innerHTML = task.taskPriority;
-        let editId = "edit" + task.taskNumber;
+        let taskPriorityId = "taskPriorityId" + String(task.taskNumber);
+        tableCell2.setAttribute("id", taskPriorityId);
+        let editId = "edit" + String(task.taskNumber);
         tableCell3.insertAdjacentHTML("afterbegin", `<img id=${editId} class="editIcon" src="editIcon.png">`);
         let editIcon = document.getElementById(editId);
         editIcon.addEventListener("click", function() {
@@ -98,8 +104,26 @@ let view = {
         document.getElementById("editModal").style.display = "block";
         let closeButton = document.getElementsByClassName("closeButton")[0];
         closeButton.addEventListener("click", function() {document.getElementById("editModal").style.display = "none";});
-        console.log(taskId);
-
+        let taskNumber = taskId.slice(4);
+        let task = model.taskArray.filter(task => taskNumber == task.taskNumber);
+        let taskName = task[0].taskName;
+        let taskPriority = task[0].taskPriority;
+        let taskDate = task[0].taskDate;
+        taskDate = taskDate.split("/");
+        taskDate = taskDate[2] + "-" + taskDate[0] + "-" + taskDate[1];
+        document.getElementById("editTaskName").value = taskName;
+        document.getElementById("editTaskDate").value = taskDate;
+        document.getElementById("editTaskPriority").value = taskPriority;
+        let editTaskSubmitButton = document.getElementById("editTaskSubmitButton");
+        editTaskSubmitButton.addEventListener("click", function() {
+            task[0].taskName = document.getElementById("editTaskName").value;
+            task[0].taskDate = controller.transformTaskDate(document.getElementById("editTaskDate").value);
+            task[0].taskPriority = document.getElementById("editTaskPriority").value;
+            document.getElementById("taskNameId" + taskNumber).innerHTML = task[0].taskName;
+            document.getElementById("taskDateId" + taskNumber).innerHTML = task[0].taskDate;
+            document.getElementById("taskPriorityId" + taskNumber).innerHTML = task[0].taskPriority;
+            document.getElementById("editModal").style.display = "none";
+        })
     },
     removeTaskFromTable: function(taskNumToDelete) {
         let taskItem = "task" + String(taskNumToDelete);
