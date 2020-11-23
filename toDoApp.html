@@ -11,24 +11,25 @@
     <body>
         <h1>To-Do App</h1>
         <p>Add tasks to track using the form below.</p>
+        <div id="enterItemTableContainer">
         <div id="enterItem">
             <h2><img id="newIcon" src="now_code_this_icon.png">Add an Item<img id="newIcon" src="now_code_this_icon.png"></h2>
-        <div id="topTaskTableContainer">
+        <div class="topTaskTableContainer">
             <div class="tableRow">
-                <div class="formElement"><label for="task">Task: </label><input id="taskField" type="text"></div>
+                <div class="formElement"><label for="task">Task: </label><input id="taskEntry" class="taskField" type="text"></div>
             </div>
         </div>
         <div id="bottomTaskTableContainer">
             <div class="tableRow">
-                <div class="formElement"><label for="date">Date: </label><input id="dateField" type="date"></div>
-                <div class="formElement"><label for="priority">Priority:</label>
-                    <select class="dropdown">
+                <div class="formElement"><label for="date">Date: </label><input id="dateEntry" class="dateField" type="date"></div>
+                <div class="formElement"><label for="priority">Priority: </label>
+                    <select id="priorityEntry" class="dropdown">
                         <option value="" disabled selected>Level</option>
                         <option value="High">High</option>
                         <option value="Med">Med</option>
                         <option value="Low">Low</option>
                     </select></div>
-                    <div class="formElement"><button id="addButton">Add to List</button></div>
+                    <div class="formElement"><button class="addButton" id="addTaskSubmitButton">Add to List</button></div>
                 </div>
                 </div>
                 <div id="error">
@@ -36,10 +37,11 @@
                 </div>
             </div>
         </div>
+    </div>
         <div id="taskSection">
         <div id="sortDeleteTable">
             <div class="tableRow">
-                <div class="sortDeleteElement">
+                <div class="buttonElementDisplay">
                     <label for="priority">Sort by:</label>
                     <select class="dropdown">
                         <option value="" disabled selected>Order</option>
@@ -59,31 +61,48 @@
                 <th id="editHeader">Edit</th>
                 <th id="deleteHeader">Delete</th>
             </tr>
-            <tr>
-                <td class="taskItem">Test Task</td>
-                <td>Test Date</td>
-                <td>Test Priority</td>
-                <td><img src="editIcon.png"></td>
-                <td><img src="deleteIcon.png"></td>
-            </tr>
         </table>
     </div>
-        <div id="deleteWarning" class="modal">
-            <div class="modal-content">
+        <div id="deleteModal">
+            <div id="deleteModalContent">
                 <h2>Are you sure?</h2>
                 <p>Do you want to delete all items from the list?</p>
                 <p>This cannot be undone.</p>
-                <div id="modalTableContainer">
+                <div class="modalTableContainer">
                     <div class="TableRow">
-                    <div class="sortDeleteElement"><button id="goBackButton">Go Back</button></div>
-                    <div class="sortDeleteElement"><button id="deleteAllModalButton">Delete All</button></div>
+                    <div class="buttonElementDisplay"><button id="cancelButton">Cancel</button></div>
+                    <div class="buttonElementDisplay"><button id="deleteAllModalButton">Delete All</button></div>
                 </div>
                 </div>
             </div>
         </div>
+        <div id="editModal">
+            <div id="editModalContent">
+                <span class="closeButton">&times;</span>
+                <h2>Edit your entry.</h2>
+                <div class="topTaskTableContainer">
+                    <div class="tableRow">
+                        <div class="formElement"><label for="task">Task: </label><input class="taskField" type="text"></div>
+                    </div>
+                </div>
+                <div id="bottomTaskTableContainer">
+                    <div class="tableRow">
+                        <div class="formElement"><label for="date">Date: </label><input class="dateField" type="date"></div>
+                        <div class="formElement"><label for="priority">Priority:</label>
+                            <select class="dropdown">
+                                <option value="" disabled selected>Level</option>
+                                <option value="High">High</option>
+                                <option value="Med">Med</option>
+                                <option value="Low">Low</option>
+                            </select></div>
+                            <div class="formElement"><button class="addButton" id="editTaskSubmitButton">Add to List</button></div>
+                        </div>
+                        </div>
+            </div>
+        </div>
         <div id="footer">
             <button id="deleteAllMainButton" type="button">Delete All</button>
-            <a href="https://nowcodethis.com/projects/"><button type="button" class="link" id="backToProjects">Back to Projects</button></a>
+            <button type="button" class="link" id="backToProjects"><a href="https://nowcodethis.com/projects/">Back to Projects</a></button>
         </div>
         </body>
 </html>
